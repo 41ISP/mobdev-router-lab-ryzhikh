@@ -1,26 +1,28 @@
+import { useSearchParams } from 'react-router-dom';
 import MovieCard from '../components/MovieCard.jsx';
 import { movies } from '../data/movies.js';
 
 export default function SearchPage() {
-  const query = '';
+  const [searchParams] = useSearchParams();
+
+  const query = (searchParams.get('q') || '').trim();
 
   const results = query
     ? movies.filter((movie) =>
-        `${movie.title} ${movie.originalTitle}`
-          .toLowerCase()
-          .includes(query.toLowerCase())
+        movie.title.toLowerCase().includes(query.toLowerCase())
       )
     : [];
 
   return (
     <section className="page-shell">
       <span className="eyebrow">SEARCH</span>
-      <h1 className="page-title">Результаты поиска</h1>
+
+      <h1 className="page-title">Поиск фильмов</h1>
 
       <p className="page-description">
         {query
-          ? `По запросу «${query}» найдено: ${results.length}`
-          : 'Введите название фильма в поиске сверху.'}
+          ? `Результаты поиска: ${query}`
+          : 'Введите название фильма для поиска'}
       </p>
 
       <div className="movie-grid">
@@ -29,8 +31,10 @@ export default function SearchPage() {
             <MovieCard key={movie.id} movie={movie} />
           ))
         ) : (
-          <div className="empty-search">
-            {query ? 'Ничего не найдено.' : 'Здесь появятся результаты поиска.'}
+          <div className="empty-note">
+            {query
+              ? 'Ничего не найдено'
+              : 'Начните вводить название фильма'}
           </div>
         )}
       </div>

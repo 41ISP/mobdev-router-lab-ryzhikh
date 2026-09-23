@@ -1,12 +1,14 @@
-export default function StatusBlock({ title, text, buttonText, onClick }) {
+export default function StatusBlock({ emoji,title, subtitle, actionLabel, onAction }) {
   return (
     <div className="status">
       <div className="status-code">404</div>
+      <div>{emoji}</div>
       <h2>{title}</h2>
-      <p>{text}</p>
-      <button className="primary-btn" onClick={onClick}>
-        {buttonText}
+      <p>{subtitle}</p>
+      <button className="primary-btn" onClick={onAction}>
+        {actionLabel}
       </button>
     </div>
   );
 }
+
