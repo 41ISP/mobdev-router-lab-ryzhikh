@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import MovieCard from '../components/MovieCard.jsx';
 import { movies } from '../data/movies.js';
 
@@ -7,16 +8,26 @@ export default function HomePage() {
       <div className="hero">
         <div className="hero-copy">
           <span className="eyebrow">MOVIEBOX / 2026</span>
-          <h1>Фильмы, которые<br />стоит посмотреть</h1>
+
+          <h1>
+            Фильмы, которые<br />стоит посмотреть
+          </h1>
+
           <p>
             Небольшая коллекция фильмов с поиском, жанрами
             и отдельными страницами для каждого фильма.
           </p>
-          <a href="/movies" className="primary-btn">Открыть каталог</a>
+
+          <Link to="/movies" className="primary-btn">
+            Открыть каталог
+          </Link>
         </div>
 
         <div className="hero-poster">
-          <span>FILM<br />NIGHT</span>
+          <span>
+            FILM<br />NIGHT
+          </span>
+
           <small>EST. 2026</small>
         </div>
       </div>
@@ -26,7 +37,10 @@ export default function HomePage() {
           <span className="eyebrow">EDITOR'S PICK</span>
           <h2>Популярное сейчас</h2>
         </div>
-        <a href="/movies" className="text-link">Все фильмы →</a>
+
+        <Link to="/movies" className="text-link">
+          Все фильмы →
+        </Link>
       </div>
 
       <div className="movie-grid">
@@ -36,4 +50,4 @@ export default function HomePage() {
       </div>
     </section>
   );
-}
+  }
